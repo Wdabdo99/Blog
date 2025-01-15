@@ -85,7 +85,7 @@ module.exports.getPostControler = async (req, res) => {
             where: {
                 id: req.params.id
             },
-            include: [Comment]
+            include: [Comment,User]
         });
 
         if (!posts) {
@@ -165,7 +165,7 @@ module.exports.deletePostControler = async (req, res) => {
             where: {
                 id: req.params.id
             },
-            include :[Comment]
+            include: [Comment]
         });
 
         if (!post) {
@@ -194,6 +194,43 @@ module.exports.deletePostControler = async (req, res) => {
         });
 
         res.status(200).json({ message: "post deleted" });
+    } catch (error) {
+        res.status(500).json({ message: "internal " });
+    }
+};
+
+/**
+ * @desc toggle likes post
+ * @route api/posts/like/:id
+ * @METHOD PUT
+ * access private(only logedin user)
+ */
+
+module.exports.likesPostControler = async (req, res) => {
+    try {
+        const post = await Post.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [User]
+        });
+
+        if (!post) {
+            return res.status(404).json({ message: "post not found" });
+        }
+
+        const likes = post.users.map(u => u?.id);
+
+        if (likes > 0 && likes.includes(req.user.id)) {
+            const indexOfUserLiked = likes.indexOf(req.user.id);
+            likes.slice(indexOfUserLiked, 1);
+        } else {
+            likes.push(req.user.id);
+        }
+
+        await post.save();
+
+        res.status(200).json({ message: "post liked", ...likes });
     } catch (error) {
         res.status(500).json({ message: "internal " });
     }

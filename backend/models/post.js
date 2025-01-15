@@ -30,9 +30,6 @@ const Post = sequelize.define("post", {
     },
     publicId: DataTypes.STRING,
 
-    likes: {
-        type: DataTypes.BOOLEAN
-    }
 });
 
 /*(async () => {

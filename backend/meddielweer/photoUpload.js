@@ -24,7 +24,7 @@ const uploadPhoto = multer({
         if (file.mimetype.startsWith("application/octet-stream")) {
             cb(null, true);
         } else {
-            cb(new Error("unsupported file format"), false);
+            cb(({message:"unsupported file format"}), false);
         }
     },
     limits: {
