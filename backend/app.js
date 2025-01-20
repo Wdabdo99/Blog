@@ -1,6 +1,8 @@
 const express = require("express");
+const cors = require("cors");
+
 const { connect } = require("./config/connect.js");
-const { notFound,errorHandler } = require("./meddielweer/errorHandler.js");
+const { notFound, errorHandler } = require("./meddielweer/errorHandler.js");
 require("dotenv").config();
 
 const app = express();
@@ -9,6 +11,12 @@ connect();
 
 const PORT = process.env.PORT || 9000;
 app.use(express.json());
+
+app.use(
+    cors({
+        origin: "http://localhost:3000"
+    })
+);
 
 app.use("/api/auth", require("./routes/authRoutes.js"));
 app.use("/api/users", require("./routes/userRoutes"));

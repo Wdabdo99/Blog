@@ -1,0 +1,13 @@
+.head{
+  font-size: 40px;
+  color: #222;
+  letter-spacing: 2;
+  padding: 20px;
+  text-transform: capitalize;
+}
+.content{
+  padding: 20px 70px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 10px;
+}

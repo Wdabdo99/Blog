@@ -3,14 +3,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { User, registerValidate, loginValidate } = require("../models/user.js");
 
-
 /**
  * @desc add new user
  * @route api/aut/register
  * @METHOD POST
  * access public
  */
- 
+
 module.exports.registerControler = async (req, res) => {
     try {
         const { error } = registerValidate(req.body);
@@ -38,12 +37,11 @@ module.exports.registerControler = async (req, res) => {
             password: hashpassword
         });
 
-        res.status(201).json(newUser);
+        res.status(201).json({ message: "register new user successfully" });
     } catch (error) {
         res.status(500).json({ message: "intarnal server error" });
     }
 };
-
 
 /**
  * @desc log in user
@@ -51,7 +49,7 @@ module.exports.registerControler = async (req, res) => {
  * @METHOD POST
  * access public
  */
- 
+
 module.exports.loginControler = async (req, res) => {
     try {
         const { error } = loginValidate(req.body);
@@ -67,17 +65,16 @@ module.exports.loginControler = async (req, res) => {
         if (!user) {
             return res
                 .status(404)
-                .json({ message: "email or password is required!" });
+                .json({ message: "email  is required!" });
         }
 
-        const conpassword = await bcrypt.compare(req.body.password, user.password);
-
-
+        const conpassword = await bcrypt.compare(
+            req.body.password,
+            user.password
+        );
 
         if (!conpassword) {
-            return res
-                .status(404)
-                .json({ message: "email or password is required" });
+            return res.status(404).json({ message: " password is required" });
         }
 
         const token = await jwt.sign(
@@ -90,12 +87,13 @@ module.exports.loginControler = async (req, res) => {
         );
 
         res.status(200).json({
+          user:{
             id: user?.id,
             isAdmin: user?.isAdmin,
             username: user?.username,
             porofilePhoto: user?.porofilePhoto,
             token: token
-        });
+        }});
     } catch (error) {
         res.status(500).json({ message: "intarnal server error" });
     }

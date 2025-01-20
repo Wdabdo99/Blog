@@ -1,0 +1,69 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #eee;
+}
+
+.logo{
+  width: fit-content;
+  height: 60px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  color: darkorange;
+  display: flex;
+  font-size: 28px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.logo svg{
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  margin-left: 5px;
+}
+
+.authLinks{
+  display: flex;
+  
+}
+.authLinks .btn{
+  background-color: #0099dd;
+  color: white;
+  padding: 7px 14px;
+  text-transform: capitalize;
+  font-size: 26px;
+  font-weight: 500;
+  border: none;
+  border-radius: 7px;
+  margin-right: 5px;
+}
+.btn:hover{
+  background-color: darkblue;
+}
+
+
+  .menu{
+    display: none;
+  }
+@media(max-width:520px){
+  .header{
+    height: 60px;
+  }
+  .logo{
+    display: none;
+  }
+  .menu{
+    display: block;
+    font-size: 40px;
+    margin-left: 20px;
+  }
+.authLinks .btn{
+  padding: 3px 7px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+}

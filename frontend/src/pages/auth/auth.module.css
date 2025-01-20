@@ -1,0 +1,66 @@
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  text-align: center;
+  align-items: center;
+  width: 600px;
+  border: 1px solid #ff;
+  margin: 250px auto 10px ;
+  box-shadow: 0px 2px 2px 5px gray;
+  height: 1000px;
+}
+
+.form .input{
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  outline: none;
+  border: 1px solid gray;
+  width: 250px;
+  border-radius: 6px;
+  font-size: 18px;
+}
+.form h2{
+  color: #555;
+  font-size: 30px;
+  font-weight: 900;
+  text-transform: capitalize;
+  
+}
+.form lebal{
+  color: #555;
+  font-size: 24px;
+  text-transform: capitalize;
+  margin-bottom: 7px;
+  width: fit-content;
+}
+
+.btn{
+  padding: 10px 14px ;
+  font-size: 20px;
+  color: #555;
+  border-radius: 6px;
+  width: 280px;
+  margin: 20px 0;
+  text-transform: capitalize;
+  background-color: darkorange;
+  border: none;
+  color: white;
+}
+
+@media(max-width:520px){
+
+  
+.form{
+  width: 300px;
+  border: 1px solid #ff;
+  box-shadow: none;
+  height: 500px;
+  margin: 30px auto 0;
+}
+.input{
+  margin-bottom: 10px;
+}
+}

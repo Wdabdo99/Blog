@@ -74,7 +74,7 @@ module.exports.getAllPostsControler = async (req, res) => {
 
 /**
  * @desc get post
- * @route api/posts:id
+ * @route api/posts/:id
  * @METHOD GET
  * access public
  */

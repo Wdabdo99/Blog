@@ -1,0 +1,45 @@
+
+.navLinks{
+  display: flex;
+}
+.navLink{
+  margin-right: 5px;
+  display: flex;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.navLink svg{
+  color:darkred ;
+  font-size: 30px;
+  margin-right: 5px;
+}
+.navLink a{
+  margin: 0 5px 0;
+  border-radius: 7px;
+  color: black;
+  background-color: transparent;
+  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: 500;
+  border: none;
+}
+
+
+@media(max-width:520px){
+  .navbar {
+    position: absolute;
+    top: 60px;
+      width: 100%;
+      left: 0;
+        background-color: #eee;
+        transition: all .7s ease-in-out;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+  
+  .navLinks{
+    flex-wrap: wrap;
+  }
+  .navLink{
+    width: 100%;
+  }
+}
