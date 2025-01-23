@@ -1,0 +1,59 @@
+.header-right-link {
+    margin-left: 10px;
+    font-size: 21px;
+    font-weight: 500;
+    background-color: var(--white-color);
+    color: var(--blue-color);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.header-right-link:hover {
+    background-color: var(--main-color);
+}
+
+.header-right-link i {
+    margin-right: 5px;
+}
+
+.header-right-user-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-right-username {
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--main-color);
+    margin-right: 10px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.header-right-user-photo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.header-right-dropdown {
+    position: absolute;
+    right: 50%;
+    top: 100%;
+    background-color: var(--main-color);
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    padding: 5px;
+    width: 150px;
+    text-align: left;
+}
+
+.header-dropdown-item {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 21px;
+    margin-top: 15px;
+    cursor: pointer;
+}

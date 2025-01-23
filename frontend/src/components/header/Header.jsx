@@ -1,11 +1,13 @@
 import LogoHeader from "./LogoHeader.jsx";
 import Navbar from "./Navbar.jsx";
-import AuthLinks from "./AuthLinks.jsx";
+import DropDown from "./DropDown.jsx";
 import style from "./css/header.module.css";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 function Header() {
     const [toggle, setToggle] = useState(false);
+    const { user } = useSelector(state => state.auth);
     return (
         <header className={style.header}>
             <div>
@@ -18,7 +20,7 @@ function Header() {
                 <LogoHeader />
             </div>
             <Navbar toggle={toggle} setToggle={setToggle} />
-            <AuthLinks />
+            <DropDown user={user} />
         </header>
     );
 }

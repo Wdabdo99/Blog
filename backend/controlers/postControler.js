@@ -61,14 +61,38 @@ module.exports.newPostControler = async (req, res) => {
 
 module.exports.getAllPostsControler = async (req, res) => {
     try {
-        const posts = await Post.findAll();
+        const { pageNumber, category } = req.query;
+        const postPrePage = 4;
+        let sikpNum = parseInt(pageNumber - 1) * postPrePage;
+        let posts;
+        console.log(parseInt(pageNumber) - 1);
+        if (category) {
+            posts = await Post.findAll({
+                where: {
+                    category
+                },
+                include:[User]
+            });
+        } else if (pageNumber) {
+            posts = await Post.findAll({
+                include:[User],
+                skip: sikpNum,
+                limit: postPrePage
+            });
+        } else {
+            posts = await Post.findAll({
+                include:[User],
+              
+            });
+        }
 
         /*if (!posts) {
             return res.status(404).json({ message: "not found" });
         }*/
         res.status(200).json(posts);
     } catch (error) {
-        res.status(500).json({ message: "internal server error" });
+        console.log(error);
+        res.status(500).json({ message: "internal server " });
     }
 };
 
@@ -85,7 +109,7 @@ module.exports.getPostControler = async (req, res) => {
             where: {
                 id: req.params.id
             },
-            include: [Comment,User]
+            include: [Comment, User]
         });
 
         if (!posts) {

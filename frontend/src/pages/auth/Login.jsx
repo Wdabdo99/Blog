@@ -1,5 +1,5 @@
 import style from "../auth/auth.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -18,10 +18,13 @@ const Login = () => {
         if (password.trim() === "") return toast.error("Password is required");
         dispatch(loginApiCall({ email, password }));
     };
+
     const navigate = useNavigate();
-    if (user) {
-        navigate("/");
-    }
+    useEffect(() => {
+        if (user) {
+            navigate("/");
+        }
+    }, [user, navigate]);
     return (
         <section>
             <form className={style.form} onSubmit={formHandler}>

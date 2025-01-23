@@ -8,7 +8,13 @@ const categorySlice = createSlice({
   },
   reducers:{
     setCategories(state,action) {
-         state.posts = action.payload;
+         state.categories = action.payload;
+      },
+    addCategory(state,action) {
+         state.categories.push(action.payload)
+      },
+    deleteCategory(state,action) {
+         state.categories.filter((e)=>e.id!== action.payload)
       },
   }
   

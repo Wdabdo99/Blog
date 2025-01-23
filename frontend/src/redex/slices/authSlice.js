@@ -12,6 +12,12 @@ const authSlice = createSlice({
     register(state,action) {
          state.registerMessage = action.payload;
       },
+    login(state,action) {
+         state.user = action.payload;
+      },
+    logout(state) {
+         state.user = null;
+      }
   }
   
 })

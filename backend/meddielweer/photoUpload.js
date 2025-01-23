@@ -21,14 +21,15 @@ const photoStorage = multer.diskStorage({
 const uploadPhoto = multer({
     storage: photoStorage,
     fileFilter: function (req, file, cb) {
-        if (file.mimetype.startsWith("application/octet-stream")) {
+        if (file.mimetype.startsWith("image")) {
+            
             cb(null, true);
         } else {
-            cb(({message:"unsupported file format"}), false);
+            cb({ message: "unsupported file format" }, false);
         }
     },
     limits: {
-        fileSize: 1024 * 1024 
+        fileSize: 1024 * 1024
     }
 });
 

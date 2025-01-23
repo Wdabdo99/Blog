@@ -1,0 +1,37 @@
+.categories{
+  margin: 30px auto 0;
+  
+}
+.categories h1{
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #555;
+  border-top: 2px solid darkred;
+  border-bottom: 2px solid darkred;
+  
+  letter-spacing: 2;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+}
+
+.categories .content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ca{
+  font-size: 22px;
+  color: #666;
+  text-transform: capitalize;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+.ca:hover{
+  background-color: orange;
+  color: white;
+  
+  
+}

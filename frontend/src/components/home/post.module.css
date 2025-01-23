@@ -3,3 +3,22 @@
   margin-top: 15px;
   padding: 25px;
 }
+.auther{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  font-size: 20px;
+}
+.auther a{
+  color: #009988;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+

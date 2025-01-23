@@ -1,5 +1,5 @@
 import style from "../auth/auth.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -23,7 +23,8 @@ const Register = () => {
         dispatch(registerApiCall({ username, email, password }));
     };
     const navigate = useNavigate();
-
+    
+    useEffect(()=>{
     if (registerMessage) {
         swal({
             title: registerMessage,
@@ -34,6 +35,8 @@ const Register = () => {
             }
         });
     }
+      
+    },[registerMessage,navigate])
 
     return (
         <>

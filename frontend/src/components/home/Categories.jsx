@@ -1,5 +1,6 @@
 import style from "./home.module.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { categoriesApiCall } from "../../redex/apicalls/categoryApiCall.js";
@@ -14,14 +15,13 @@ function Categories() {
     return (
         <>
             <div className={style.categories}>
-            <h1>categories</h1>
-                {categories?.map(category => {
-                    return (
-                        <div>
-                            <h1>{category.title}</h1>
-                        </div>
-                    );
-                })}
+                <h1>categories</h1>
+                <div className={style.content}>
+                    {categories?.map(c => {
+                        return <Link
+                        to={`/posts?category=${c.title}`} className={style.ca}>{c.title}</Link>;
+                    })}
+                </div>
             </div>
         </>
     );
