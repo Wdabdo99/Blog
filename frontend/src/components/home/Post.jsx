@@ -1,14 +1,14 @@
 import style from "./post.module.css";
 import { Link } from "react-router-dom";
 
-function Post({ post }) {
+function Post({ post,username,userId }) {
     return (
         <>
             <div className={style.post}>
                 <img src={post.postImage} alt="alt" />
                 <div className={style.auther}>
-                    <Link to={`/profile/${post?.user?.id}`}>
-                        {post?.user?.username}
+                    <Link to={`/profile/${userId}`}>
+                        {username}
                     </Link>
                     <span>{new Date(post?.createdAt).toDateString()}</span>
                 </div>

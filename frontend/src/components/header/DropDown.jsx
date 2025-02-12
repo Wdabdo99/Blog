@@ -8,7 +8,7 @@ import image from "../../components/header/baghdad.jpg";
 
 function DropDown({ user }) {
     const dispatch = useDispatch();
-    const [dropdown, setDropdown] = useState(true);
+    const [dropdown, setDropdown] = useState(false);
 
     const logoutHandler = () => {
         setDropdown(false);
@@ -26,14 +26,14 @@ function DropDown({ user }) {
                             {user?.username}
                         </span>
                         <img
-                            src={image}
+                            src={user.profilePhoto}
                             alt="user"
                             className="header-right-user-photo"
                         />
                         {dropdown && (
                             <div className="header-right-dropdown">
                                 <Link
-                                    to={`/profile/${user?._id}`}
+                                    to={`/profile/${user?.id}`}
                                     className="header-dropdown-item"
                                     onClick={() => setDropdown(false)}
                                 >

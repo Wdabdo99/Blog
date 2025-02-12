@@ -1,5 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const xss = require("xss-clean");
+
+const hpp = require("hpp");
+
 
 const { connect } = require("./config/connect.js");
 const { notFound, errorHandler } = require("./meddielweer/errorHandler.js");
@@ -12,6 +16,8 @@ connect();
 const PORT = process.env.PORT || 9000;
 app.use(express.json());
 
+app.use(xss());
+app.use(hpp());
 app.use(
     cors({
         origin: "http://localhost:3000"

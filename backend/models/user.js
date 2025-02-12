@@ -4,6 +4,9 @@ const joi = require("joi");
 const { Post } = require("../models/post.js");
 const { Comment } = require("../models/comment.js");
 
+const joipassword = require("joi-password-complexity");
+
+
 const User = sequelize.define("user", {
     // Model attributes are defined here
     username: {
@@ -55,9 +58,9 @@ User.hasMany(Post, {
 });
 Post.belongsTo(User, { targetKey: "id" });
 Post.hasMany(User, {
-    foreignKey: "likedId"
+    foreignKey: "like"
 });
-User.belongsTo(Post, { targetKey: "id" });
+User.belongsTo(Post);
 
 User.hasMany(Comment, {
     foreignKey: "userId"
@@ -78,7 +81,7 @@ function registerValidate(obj) {
     const validate = joi.object({
         username: joi.string().trim().max(100).min(3).required(),
         email: joi.string().trim().max(100).min(5).required().email(),
-        password: joi.string().trim().min(6).required()
+        password: joipassword()
     });
     return validate.validate(obj);
 }
@@ -93,6 +96,8 @@ function loginValidate(obj) {
 function updateUserValidate(obj) {
     const validate = joi.object({
         username: joi.string().trim().max(100).min(3),
+        bio: joi.string().trim().max(100).min(3),
+        
         password: joi.string().trim().min(6)
     });
     return validate.validate(obj);

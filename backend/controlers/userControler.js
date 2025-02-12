@@ -57,13 +57,11 @@ module.exports.getcountusersControler = async (req, res) => {
  * @desc get profile user
  * @route api/users/:id
  * @METHOD GET
- * access private(only user himsalf)
+ * access private(only user loged in)
  */
 module.exports.getUserControler = async (req, res) => {
     try {
-        if (req.user.id != req.params.id) {
-            return res.status(401).json({ message: "only user himsalf" });
-        }
+
         const user = await User.findOne({
             where: {
                 id: req.params.id
@@ -124,7 +122,7 @@ module.exports.updateUserControler = async (req, res) => {
 };
 
 /**
- * @desc get profile user
+ * @desc delete profile
  * @route api/users/:id
  * @METHOD DELETE
  * access private(only user himsalf or admin)
@@ -181,6 +179,7 @@ module.exports.deleteUserControler = async (req, res) => {
 module.exports.uploadImageUserControler = async (req, res) => {
     try {
         if (!req.file) {
+          console.log(file);
             return res.status(400).json({
                 message: "dont have image please add your image profile "
             });

@@ -91,7 +91,7 @@ module.exports.loginControler = async (req, res) => {
             id: user?.id,
             isAdmin: user?.isAdmin,
             username: user?.username,
-            porofilePhoto: user?.porofilePhoto,
+            profilePhoto: user?.profilePhoto,
             token: token
         }});
     } catch (error) {

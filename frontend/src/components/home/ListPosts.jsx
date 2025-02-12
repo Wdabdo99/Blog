@@ -7,7 +7,10 @@ function ListPosts({ posts }) {
         <>
             <div className={style.posts}>
                 {posts?.map(post => {
-                    return <Post post={post} />;
+                    return <Post post={post}
+                    username={post?.user?.username}
+                    userId={post?.userId}
+                    />;
                 })}
             </div>
         </>
